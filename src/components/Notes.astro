@@ -1,0 +1,135 @@
+---
+import { getCollection, render } from 'astro:content'
+import { getLangFromPath } from '@/i18n/lang.ts'
+
+const currentPath = Astro.url.pathname
+const currentLang = getLangFromPath(currentPath)
+
+// 获取所有小记并按日期倒序排列
+const allNotes = await getCollection('notes', ({ data }) => {
+  return data.lang === currentLang || data.lang === ''
+})
+
+const sortedNotes = allNotes.sort((a, b) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+)
+
+// 格式化日期
+function formatDate(date: Date): string {
+  const year = date.getFullYear()
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const day = String(date.getDate()).padStart(2, '0')
+  const hour = String(date.getHours()).padStart(2, '0')
+  const minute = String(date.getMinutes()).padStart(2, '0')
+  
+  return `${year}-${month}-${day} ${hour}:${minute}`
+}
+---
+
+<section class="notes-section">
+  <div class="notes-container">
+    {sortedNotes.map(async (note, index) => {
+      const { Content } = await render(note)
+      return (
+        <>
+          <article class="note-item">
+            <div class="note-content heti">
+              <Content />
+            </div>
+            <time class="note-date" datetime={note.data.date.toISOString()}>
+              {formatDate(note.data.date)}
+            </time>
+          </article>
+          {index < sortedNotes.length - 1 && (
+            <div class="uno-decorative-line"></div>
+          )}
+        </>
+      )
+    })}
+  </div>
+</section>
+
+<style>
+.notes-section {
+  margin: 2rem 0;
+}
+
+.notes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.note-item {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.note-date {
+  display: block;
+  font-size: 0.875rem;
+  color: var(--secondary-color, oklch(40% 0.005 298));
+  font-family: 'Snell-Bold', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.note-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.note-content :global(p) {
+  margin: 0 0 0.5rem 0;
+}
+
+.note-content :global(p:last-child) {
+  margin-bottom: 0;
+}
+
+/* 浅色模式明确样式 */
+@media (prefers-color-scheme: light) {
+  .note-date {
+    color: oklch(var(--un-preset-theme-colors-secondary) / 0.8) !important;
+  }
+}
+
+/* 暗色模式适配 */
+@media (prefers-color-scheme: dark) {
+  .notes-title {
+    color: var(--primary-color, oklch(92% 0.005 298));
+  }
+  
+  .note-date {
+    color: oklch(var(--un-preset-theme-colors-secondary)) !important;
+  }
+  
+  .note-item {
+    border-left-color: var(--highlight-color, oklch(60% 0.15 220 / 0.4));
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .notes-section {
+    margin: 1.5rem 0;
+  }
+  
+  .notes-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .notes-container {
+    gap: 1rem;
+  }
+  
+  .note-item {
+    padding-left: 0.75rem;
+  }
+  
+  .note-content {
+    font-size: 0.9rem;
+  }
+}
+</style>

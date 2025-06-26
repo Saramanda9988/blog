@@ -1,0 +1,46 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import NotesComponent from '@/components/Notes.astro'
+---
+
+<Layout> 
+    <!-- Decorative Line -->
+  <div class="uno-decorative-line"></div>
+  <NotesComponent />
+</Layout>
+
+<style>
+.page-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--primary-color, oklch(25% 0.005 298));
+}
+
+.page-description {
+  font-size: 1.1rem;
+  color: var(--secondary-color, oklch(40% 0.005 298));
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .page-header {
+    margin-bottom: 2rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-description {
+    font-size: 1rem;
+  }
+}
+</style>

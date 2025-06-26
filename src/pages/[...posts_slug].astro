@@ -6,7 +6,7 @@ import PostDate from '@/components/PostDate.astro'
 import TagsWrapper from '@/components/TagsWrapper.astro'
 import BackButton from '@/components/Widgets/BackButton.astro'
 import TOC from '@/components/Widgets/TOC.astro'
-import { allLocales, defaultLocale, moreLocales } from '@/config'
+import { defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
 import { checkPostSlugDuplication } from '@/utils/content'
 import { generateDescription } from '@/utils/description'
@@ -19,23 +19,6 @@ export async function getStaticPaths() {
   if (duplicates.length > 0) {
     throw new Error(`Duplicate post slugs:\n${duplicates.join('\n')}`)
   }
-
-  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-  // Use a Map to store the relationship between post slugs and their supported languages
-  // Set is used to store the supported languages for each post
-  const slugToLangsMap = posts.reduce((map, post) => {
-    const slug = post.data.abbrlink || post.id
-    const lang = post.data.lang
-
-    if (!map.has(slug)) {
-      map.set(slug, new Set(lang ? [lang] : allLocales))
-    }
-    else if (lang) {
-      map.get(slug)?.add(lang)
-    }
-
-    return map
-  }, new Map<string, Set<string>>())
 
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   type PathItem = {

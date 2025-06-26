@@ -12,6 +12,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "new-post": "esno scripts/new-post.ts",
+    "new-note": "esno scripts/new-note.ts",
     "format-posts": "esno scripts/format-posts.ts",
     "generate-lqip": "esno scripts/generate-lqip.ts",
     "apply-lqip": "esno scripts/apply-lqip.ts",
