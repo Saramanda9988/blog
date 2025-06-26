@@ -1,0 +1,36 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import NotesComponent from '@/components/Notes.astro'
+import { defaultLocale, moreLocales } from '@/config'
+
+export async function getStaticPaths() {
+  type PathItem = {
+    params: { notes: string }
+    props: { lang: string }
+  }
+
+  const paths: PathItem[] = []
+
+  // Default locale
+  paths.push({
+    params: { notes: 'notes/' },
+    props: { lang: defaultLocale },
+  })
+
+  // More locales
+  moreLocales.forEach((lang: string) => {
+    paths.push({
+      params: { notes: `${lang}/notes/` },
+      props: { lang },
+    })
+  })
+
+  return paths
+}
+---
+
+<Layout> 
+  <!-- Decorative Line -->
+  <div class="uno-decorative-line"></div>
+  <NotesComponent />
+</Layout>
