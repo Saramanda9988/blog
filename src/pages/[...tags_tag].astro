@@ -3,7 +3,7 @@ import PostList from '@/components/PostList.astro'
 import TagsWrapper from '@/components/TagsWrapper.astro'
 import { defaultLocale, moreLocales } from '@/config'
 import Layout from '@/layouts/Layout.astro'
-import { getAllTags, getPostsByTag, getTagSupportedLangs } from '@/utils/content'
+import { getAllTags, getPostsByTag } from '@/utils/content'
 
 export async function getStaticPaths() {
   type PathItem = {
@@ -39,10 +39,9 @@ export async function getStaticPaths() {
 const { tag, lang } = Astro.props
 const posts = await getPostsByTag(tag, lang)
 const allTags = await getAllTags(lang)
-const supportedLangs = await getTagSupportedLangs(tag)
 ---
 
-<Layout supportedLangs={supportedLangs}>
+<Layout>
   <!-- Decorative Line -->
   <div class="uno-decorative-line"></div>
   <!-- Tags List -->

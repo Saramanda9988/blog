@@ -8,11 +8,11 @@ export const themeConfig: ThemeConfig = {
     // site subtitle
     subtitle: 'Revive the beauty of typography',
     // site description
-    description: 'Retypeset is a static blog theme based on the Astro framework. Inspired by Typography, Retypeset establishes a new visual standard and reimagines the layout of all pages, creating a reading experience reminiscent of paper books, reviving the beauty of typography. Details in every sight, elegance in every space.',
+    description: 'LunaRain的blog',
     // use i18n title/subtitle/description from src/i18n/ui.ts instead of static ones above
     i18nTitle: true, // true, false
     // author name
-    author: 'radishzz',
+    author: '',
     // site url
     url: 'https://retypeset.radishzz.cc',
     // favicon url
@@ -153,16 +153,12 @@ export const themeConfig: ThemeConfig = {
     // social links
     links: [
       {
-        name: 'RSS',
-        url: '/atom.xml', // or /rss.xml
-      },
-      {
         name: 'GitHub',
-        url: 'https://github.com/radishzzz/astro-theme-retypeset',
+        url: 'https://github.com/Saramanda9988',
       },
       {
         name: 'Email',
-        url: 'email@radishzz.cc',
+        url: '2074730050@qq.com',
       },
       // {
       //   name: 'X',
