@@ -1,5 +1,6 @@
 import type { Element } from 'hast'
 import mdx from '@astrojs/mdx'
+import netlify from '@astrojs/netlify'
 import partytown from '@astrojs/partytown'
 import sitemap from '@astrojs/sitemap'
 import Compress from 'astro-compress'
@@ -35,6 +36,8 @@ export default defineConfig({
   site: url,
   base: '/',
   trailingSlash: 'always',
+  output: 'static',
+  adapter: netlify(),
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport', // hover, tap, viewport, load

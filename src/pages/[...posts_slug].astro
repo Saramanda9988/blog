@@ -37,15 +37,6 @@ export async function getStaticPaths() {
     return map
   }, new Map<string, Set<string>>())
 
-  // Convert Map<slug, Set<langs>> to Record<slug, langs[]> structure
-  // Sort languages according to the order defined in allLocales
-  const slugToLangs = Object.fromEntries(
-    Array.from(slugToLangsMap.entries()).map(([slug, langs]) => [
-      slug,
-      [...langs].sort((a, b) => allLocales.indexOf(a) - allLocales.indexOf(b)),
-    ]),
-  )
-
   // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   type PathItem = {
     params: { posts_slug: string }
