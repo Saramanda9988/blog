@@ -12,7 +12,7 @@ WHUT计算机24级在读
 
 ## 联系方式
 
-- 📧 Email: <2074730050@qq.com>
+- 🐧 QQ: 2074730050
 - 🐙 GitHub: [LunaRain_079](https://github.com/Saramanda9988)
 
 ---
