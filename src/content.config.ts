@@ -42,4 +42,11 @@ const notes = defineCollection({
   }),
 })
 
-export const collections = { posts, about, notes }
+const friends = defineCollection({
+  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/friends' }),
+  schema: z.object({
+    lang: z.enum(['', ...allLocales]).optional().default(''),
+  }),
+})
+
+export const collections = { posts, about, notes, friends }

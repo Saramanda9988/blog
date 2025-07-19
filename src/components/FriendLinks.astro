@@ -1,0 +1,70 @@
+---
+interface FriendLink {
+  name: string
+  url: string
+  avatar: string
+  description: string
+}
+
+// 示例友链数据
+const friendLinks: FriendLink[] = [
+  {
+    name: '朋友1',
+    url: 'https://friend1.example.com',
+    avatar: '/friends/avatar1.png',
+    description: '朋友1的个人博客'
+  },
+  {
+    name: '朋友2',
+    url: 'https://friend2.example.com',
+    avatar: '/friends/avatar2.png',
+    description: '朋友2的个人博客'
+  },
+  {
+    name: '朋友3',
+    url: 'https://friend3.example.com',
+    avatar: '/friends/avatar3.png',
+    description: '朋友3的个人博客'
+  },
+  {
+    name: '朋友4',
+    url: 'https://friend4.example.com',
+    avatar: '/friends/avatar4.png',
+    description: '朋友4的个人博客'
+  },
+  {
+    name: '朋友5',
+    url: 'https://friend5.example.com',
+    avatar: '/friends/avatar5.png',
+    description: '朋友5的个人博客'
+  },
+  {
+    name: '朋友6',
+    url: 'https://friend6.example.com',
+    avatar: '/friends/avatar6.png',
+    description: '朋友6的个人博客'
+  }
+]
+---
+
+<div class="friends-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+  {friendLinks.map(friend => (
+    <a href={friend.url} target="_blank" rel="noopener noreferrer" class="friend-card p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow duration-300">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full overflow-hidden">
+          <img src={friend.avatar} alt={friend.name} class="w-full h-full object-cover" />
+        </div>
+        <div>
+          <h3 class="text-lg font-medium">{friend.name}</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{friend.description}</p>
+        </div>
+      </div>
+    </a>
+  ))}
+</div>
+
+<style>
+  .friend-card {
+    background-color: var(--theme-card);
+  }
+</style> 
