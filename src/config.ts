@@ -81,7 +81,7 @@ export const themeConfig: ThemeConfig = {
     // https://waline.js.org/en/
     waline: {
       // server url
-      serverURL: 'https://waline-j7tjppjvp-tangyuqing9988-6528s-projects.vercel.app',
+      serverURL: 'https://waline-snowy-beta.vercel.app',
       // emoji url
       emoji: [
         'https://unpkg.com/@waline/emojis@1.2.0/tw-emoji',
