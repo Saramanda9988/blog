@@ -14,7 +14,7 @@ export const themeConfig: ThemeConfig = {
     // author name
     author: '',
     // site url
-    url: 'https://retypeset.radishzz.cc',
+    url: 'https://www.lunarain.top',
     // favicon url
     // recommended formats: svg, png or ico
     favicon: '/icons/favicon.svg', // or https://example.com/favicon.svg
@@ -81,7 +81,7 @@ export const themeConfig: ThemeConfig = {
     // https://waline.js.org/en/
     waline: {
       // server url
-      serverURL: 'https://retypeset-comment.radishzz.cc',
+      serverURL: 'https://waline-j7tjppjvp-tangyuqing9988-6528s-projects.vercel.app',
       // emoji url
       emoji: [
         'https://unpkg.com/@waline/emojis@1.2.0/tw-emoji',
@@ -92,7 +92,7 @@ export const themeConfig: ThemeConfig = {
       search: false, // true, false
       // image uploader
       imageUploader: false, // true, false
-    },
+    }
   },
   // COMMENT SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END
 
