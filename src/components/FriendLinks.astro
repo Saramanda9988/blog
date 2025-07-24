@@ -9,54 +9,30 @@ interface FriendLink {
 // 示例友链数据
 const friendLinks: FriendLink[] = [
   {
-    name: '朋友1',
-    url: 'https://friend1.example.com',
-    avatar: '/friends/avatar1.png',
-    description: '朋友1的个人博客'
+    name: 'Hibernator',
+    url: 'https://vorest0628.github.io',
+    avatar: '/photos/about.png',
+    description: '一位兴趣使然，涉猎音游/AI/前端的otaku'
   },
   {
-    name: '朋友2',
-    url: 'https://friend2.example.com',
-    avatar: '/friends/avatar2.png',
-    description: '朋友2的个人博客'
-  },
-  {
-    name: '朋友3',
-    url: 'https://friend3.example.com',
-    avatar: '/friends/avatar3.png',
-    description: '朋友3的个人博客'
-  },
-  {
-    name: '朋友4',
-    url: 'https://friend4.example.com',
-    avatar: '/friends/avatar4.png',
-    description: '朋友4的个人博客'
-  },
-  {
-    name: '朋友5',
-    url: 'https://friend5.example.com',
-    avatar: '/friends/avatar5.png',
-    description: '朋友5的个人博客'
-  },
-  {
-    name: '朋友6',
-    url: 'https://friend6.example.com',
-    avatar: '/friends/avatar6.png',
-    description: '朋友6的个人博客'
+    name: 'PurplePlanen',
+    url: 'https://www.purpleplanen.top',
+    avatar: '/photos/logo.png',
+    description: '紫翼天航-FE链接地'
   }
 ]
 ---
 
-<div class="friends-container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+<div class="friends-container">
   {friendLinks.map(friend => (
-    <a href={friend.url} target="_blank" rel="noopener noreferrer" class="friend-card p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-md transition-shadow duration-300">
+    <a href={friend.url} target="_blank" rel="noopener noreferrer" class="friend-card">
       <div class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-full overflow-hidden">
-          <img src={friend.avatar} alt={friend.name} class="w-full h-full object-cover" />
+        <div class="avatar-container">
+          <img src={friend.avatar} alt={friend.name} />
         </div>
-        <div>
-          <h3 class="text-lg font-medium">{friend.name}</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">{friend.description}</p>
+        <div class="content-container">
+          <h3>{friend.name}</h3>
+          <p>{friend.description}</p>
         </div>
       </div>
     </a>
@@ -64,7 +40,58 @@ const friendLinks: FriendLink[] = [
 </div>
 
 <style>
+  .friends-container {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
   .friend-card {
     background-color: var(--theme-card);
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: box-shadow 0.3s, transform 0.3s;
+    overflow: hidden;
+  }
+  .friend-card:hover {
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+  }
+  .avatar-container {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff; /* 新增白色边框，提升头像统一感 */
+    box-shadow: 0 0 4px rgba(0,0,0,0.04); /* 柔和阴影 */
+  }
+  .avatar-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* 防止图片有默认的间隙 */
+    vertical-align: middle;
+  }
+  .content-container {
+    flex: 1;
+    min-width: 0;
+  }
+  .friend-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    word-break: break-all;
+  }
+  .friend-card p {
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    word-break: break-all;
   }
 </style> 
