@@ -122,5 +122,6 @@
     "webp",
     "Переверстка",
     "Русский"
-  ]
+  ],
+  "kiroAgent.configureMCP": "Disabled"
 }
