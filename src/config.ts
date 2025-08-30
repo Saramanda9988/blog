@@ -4,9 +4,9 @@ export const themeConfig: ThemeConfig = {
   // SITE INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> START
   site: {
     // site title
-    title: 'LunaRain_079\'s Blog',
+    title: '独酌清月',
     // site subtitle
-    subtitle: '',
+    subtitle: '暂伴月将影 行乐须及春',
     // site description
     description: '个人博客',
     // use i18n title/subtitle/description from src/i18n/ui.ts instead of static ones above
